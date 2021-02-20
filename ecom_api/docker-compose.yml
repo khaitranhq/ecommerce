@@ -1,0 +1,12 @@
+version: '3'
+services:
+  database:
+    image: 'postgres:latest'
+    restart: always
+    volumes:
+      - ./docker-postgresql-multiple-databases:/docker-entrypoint-initdb.d
+    environment:
+      - POSTGRES_PASSWORD=Pass@word1
+      - POSTGRES_MULTIPLE_DATABASES=ecom,ecom_test
+    ports:
+      - '5433:5432'
